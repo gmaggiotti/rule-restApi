@@ -9,6 +9,15 @@ function Rule() {
             });
         });
     };
+
+    this.getId = function(res, id) {
+        connection.acquire(function(err, con) {
+           resu= con.query('select * from rule where id='+id, function(err, result) {
+                con.release();
+                res.send(result);
+            });
+        });
+    };
 }
 
 module.exports = new Rule();

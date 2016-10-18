@@ -1,10 +1,12 @@
-var rule = require('./models/rule');
+var rule_routes = require('./routes/rules');
 
 
 module.exports = {
     configure: function(app) {
-        app.get('/rule/', function(req, res) {
-            rule.get(res);
-        });
+
+        app.get('/rules/', rule_routes.findAll);
+
+        app.get('/rules/:id', rule_routes.findById);
+
     }
 };
