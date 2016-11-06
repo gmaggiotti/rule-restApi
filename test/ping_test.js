@@ -2,26 +2,22 @@ var chai = require('chai');
 var should = chai.should();
 var request = require('supertest');
 var express = require('express');
-var routes = require('../src/routes/routes');
-var sinon = require('sinon');
-
-var rule_routes = require('../src/routes/service');
+var ping_route = require('../src/routes/ping');
 
 var app = express();
-app.use('/rules/', rule_routes.findAll);
+app.get('/ping/', ping_route.ping);
 
 module.exports = app;
 
 describe('Test for ping', function() {
 
-    it('/rules return pong', function(done) {
+    it('/ping return pong', function(done) {
         request(app)
             .get('/ping/')
             .expect(200, "pong")
             .end(function(err, res){
                 if (err) throw err;
-
                 done();
             });
-    });
+        });
 });
