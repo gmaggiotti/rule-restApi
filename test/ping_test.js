@@ -2,7 +2,7 @@ var chai = require('chai');
 var should = chai.should();
 var request = require('supertest');
 var express = require('express');
-var ping_route = require('../src/routes/ping');
+var ping_route = require('../src/services/ping');
 
 var app = express();
 app.get('/ping/', ping_route.ping);

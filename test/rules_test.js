@@ -5,7 +5,7 @@ var express = require('express');
 var routes = require('../src/routes/routes');
 var sinon = require('sinon');
 
-var rule_routes = require('../src/routes/service');
+var rule_routes = require('../src/services/rule_service');
 
 var app = express();
 app.use('/rules/', rule_routes.findAll);

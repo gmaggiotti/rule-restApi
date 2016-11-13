@@ -1,5 +1,5 @@
-var rule_route = require('./service');
-var ping_route = require('./ping');
+var rule_route = require('./../services/rule_service');
+var ping_route = require('./../services/ping');
 
 exports.configure = function(app) {
     app.get('/rules/', rule_route.findAll);
