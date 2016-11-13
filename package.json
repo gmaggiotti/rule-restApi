@@ -13,6 +13,7 @@
     "chai": "^3.5.0",
     "mysql": "^2.11.1",
     "restify": "^4.2.0",
+    "restify-logger": "^2.0.1",
     "sinon": "^1.17.6",
     "supertest": "^2.0.1"
   },
