@@ -1,15 +1,14 @@
-var express = require('express');
+var restify = require('restify');
 var bodyparser = require('body-parser');
 var connection = require('./connection');
 var routes = require('./routes/routes');
 
-var app = express();
-app.use(bodyparser.urlencoded({extended: true}));
-app.use(bodyparser.json());
+var app = restify.createServer();
+app.use(restify.bodyParser());
 
 connection.init();
 routes.configure(app);
 
-var server = app.listen(8000, function() {
-    console.log('Server listening on port ' + server.address().port);
+app.listen(8000, function () {
+    console.log("App online on localhost:8000");
 });

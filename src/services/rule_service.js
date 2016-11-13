@@ -8,12 +8,13 @@ exports.findAll = function(request, response) {
 
 exports.findById = function(request, response){
     if (request.method === 'GET') {
-        if (!isNaN(request.params.id))
+        var n = request.params.id;
+        if (!isNaN(parseFloat(n)) && isFinite(n))
             rule.getId( function (result) {
                 response.send(result);
             }, request.params.id);
         else
-            response.status(400).send("400 Bad Request");
+            response.send(400,"400 Bad Request");
         console.log(request.params.id);
     }
 };

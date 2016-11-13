@@ -11,8 +11,8 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "chai": "^3.5.0",
-    "express": "^4.14.0",
     "mysql": "^2.11.1",
+    "restify": "^4.2.0",
     "sinon": "^1.17.6",
     "supertest": "^2.0.1"
   },
