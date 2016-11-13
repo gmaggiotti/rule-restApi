@@ -11,5 +11,5 @@ connection.init();
 routes.configure(app);
 
 var server = app.listen(8000, function() {
-    console.log('Server listening on port ' + server.address().port);
+    console.log('server listening on port ' + server.address().port);
 });
