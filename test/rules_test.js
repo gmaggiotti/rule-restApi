@@ -1,13 +1,13 @@
 var chai = require('chai');
 var should = chai.should();
 var request = require('supertest');
-var express = require('express');
+var restify = require('restify');
 var routes = require('../src/routes/routes');
 var sinon = require('sinon');
 
 var rule_routes = require('../src/services/rule_service');
 
-var app = express();
+var app = restify.createServer();
 app.use('/rules/', rule_routes.findAll);
 
 module.exports = app;
