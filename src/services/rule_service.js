@@ -14,7 +14,7 @@ exports.findById = function(request, response){
     try {
         if (request.method === 'GET') {
             var n = request.params.id;
-            if (!isNaN(parseFloat(n)) && isFinite(n))
+            if (isNumber(n))
                 rule.getId(function (result) {
                     response.send(result);
                 }, request.params.id);
@@ -26,3 +26,7 @@ exports.findById = function(request, response){
         response.send(500, "Internal Error")
     }
 };
+
+var isNumber = function ( id ) {
+  return   !isNaN(parseFloat( id )) && isFinite( id )
+}
