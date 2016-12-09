@@ -4,7 +4,15 @@ function Connection() {
     this.Rule = null;
 
     this.init = function() {
-        orm.connect("mysql://root@localhost/tx", function (err, db) {
+        var opts = {
+            host:     'localhost',
+            database: 'tx',
+            protocol: 'mysql',
+            port:     '3306',
+            query:    {pool: true}
+        };
+
+        orm.connect(opts, function (err, db) {
             if (err) throw err;
 
             db.load("./models/rule", function (err) {
