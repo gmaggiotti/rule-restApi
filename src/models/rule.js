@@ -1,22 +1,12 @@
-var connection = require('../connection');
-
-exports.get = function (response ) {
-    connection.acquire(function (err, con) {
-        con.query('select * from rule', function (err, result) {
-            con.release();
-            response(result);
-        });
+module.exports = function (db, cb) {
+    db.define('rule', {
+        version     : {type: 'integer'},
+        bucket_size : {type: 'integer'},
+        isme        : {type: 'integer'},
+        ismp        : {type: 'integer'},
+        segment     : String,
+        site_id     : String
     });
+
+    return cb();
 };
-
-exports.getId = function (response, id ) {
-    connection.acquire(function (err, con) {
-        con.query('select * from rule where id=' + id, function (err, result) {
-            con.release();
-            response(result);
-        });
-    });
-};
-
-
-

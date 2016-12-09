@@ -1,21 +1,18 @@
-var mysql = require('mysql');
+var orm = require("orm");
 
 function Connection() {
-    this.pool = null;
+    this.Rule = null;
 
     this.init = function() {
-        this.pool = mysql.createPool({
-            connectionLimit: 10,
-            host: 'localhost',
-            user: 'root',
-            password: '',
-            database: 'tx'
-        });
-    };
+        orm.connect("mysql://root@localhost/tx", function (err, db) {
+            if (err) throw err;
 
-    this.acquire = function(callback) {
-        this.pool.getConnection(function(err, connection) {
-            callback(err, connection);
+            db.load("./models/rule", function (err) {
+                // loaded!
+                var Rule = db.models.rule;
+                this.Rule = Rule
+            });
+
         });
     };
 }
