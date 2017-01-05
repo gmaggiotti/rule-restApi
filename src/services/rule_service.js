@@ -27,6 +27,12 @@ exports.findById = function(request, response){
     }
 };
 
+exports.createRule = function (request, response) {
+    //TODO: validate form values
+    rule.put(request.body);
+    response.send(200, "OK")
+};
+
 var isNumber = function ( id ) {
   return   !isNaN(parseFloat( id )) && isFinite( id )
 }

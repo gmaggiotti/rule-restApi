@@ -9,6 +9,7 @@ exports.configure = function(app) {
 
     app.get('/rules', rule_route.findAll);
     app.get('/rules/:id', rule_route.findById);
+    app.post('/rules', rule_route.createRule)
     app.get('/ping', ping_route.ping);
 
     //Production error handle
